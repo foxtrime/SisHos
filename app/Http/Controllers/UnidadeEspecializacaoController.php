@@ -93,8 +93,7 @@ class UnidadeEspecializacaoController extends Controller
             }
         }
 
-        $especialidades_vagas= array_combine($especialidades_array,$qnt_vagas);
-        return response()->json($especialidades_vagas);
+        return response()->json(["especialidades"=>$especialidades_array,"qnt_vagas"=>$qnt_vagas]);
         
     }
 }
