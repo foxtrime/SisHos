@@ -96,4 +96,17 @@ class UnidadeEspecializacaoController extends Controller
         return response()->json(["especialidades"=>$especialidades_array,"qnt_vagas"=>$qnt_vagas]);
         
     }
+
+    function getVagas($uni,$esp){
+
+        $esp = Especializacoes::where('nome',$esp)->get();
+
+        $a = UnidadeEspecializacao::with('unidade','especializacao')
+            ->where('unidade_id','=',$u)
+                ->where('especializacao_id','=',$esp->id)
+                    ->get();
+
+        return response()->json($a);
+    }
+    
 }
